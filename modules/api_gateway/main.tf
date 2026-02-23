@@ -1,6 +1,12 @@
 resource "aws_apigatewayv2_api" "http_api" {
   name          = var.api_name
   protocol_type = "HTTP"
+  cors_configuration {
+    allow_origins = ["*"]
+    allow_methods = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    allow_headers = ["Content-Type", "Authorization"]
+    max_age       = 300
+  }
 }
 
 resource "aws_apigatewayv2_stage" "default" {
@@ -27,6 +33,14 @@ resource "aws_apigatewayv2_authorizer" "cognito_auth" {
     audience = [var.user_pool_client_id]
     issuer   = var.user_pool_issuer
   }
+}
+
+
+resource "aws_apigatewayv2_route" "options_route" {
+  api_id    = aws_apigatewayv2_api.http_api.id
+  route_key = "OPTIONS /{proxy+}"
+
+  target = "integrations/${aws_apigatewayv2_integration.lambda_integration.id}"
 }
 
 resource "aws_apigatewayv2_route" "default_route" {

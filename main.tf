@@ -55,3 +55,13 @@ output "cognito_user_pool_id" {
 output "cognito_client_id" {
   value = module.cognito.user_pool_client_id
 }
+
+module "frontend" {
+  source      = "./modules/s3-website"
+  bucket_name = "projecte7-cloud-inventory-frontend"
+}
+
+output "frontend_url" {
+  description = "URL del Frontend"
+  value       = module.frontend.website_endpoint
+}

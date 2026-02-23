@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario Cloud</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📦 Inventario Cloud</h1>
+
+        <!-- Login Section -->
+        <div id="login-section">
+            <h2>Iniciar Sesión</h2>
+            <input type="email" id="email" placeholder="Email" value="test@example.com">
+            <input type="password" id="password" placeholder="Contraseña">
+            <button onclick="login()">Entrar</button>
+            <p style="text-align:center; margin-top:10px;">
+                ¿No tienes cuenta? <a href="#" onclick="showRegister()">Regístrate aquí</a>
+            </p>
+            <p id="login-message"></p>
+        </div>
+
+        <!-- Register Section (Hidden) -->
+        <div id="register-section" style="display:none;">
+            <h2>Crear Cuenta</h2>
+            <input type="email" id="reg-email" placeholder="Email">
+            <input type="password" id="reg-password" placeholder="Contraseña (Mín 6 caracteres)">
+            <input type="password" id="reg-confirm-password" placeholder="Confirmar Contraseña">
+            <button onclick="register()">Registrarse</button>
+            <p style="text-align:center; margin-top:10px;">
+                ¿Ya tienes cuenta? <a href="#" onclick="showLogin()">Inicia sesión</a>
+            </p>
+            <p id="register-message" style="color:red; text-align:center;"></p>
+        </div>
+
+        <!-- Verify Section (Hidden) -->
+        <div id="verify-section" style="display:none;">
+            <h2>Verificar Email</h2>
+            <p>Hemos enviado un código a tu correo.</p>
+            <input type="email" id="verify-email" placeholder="Email" disabled>
+            <input type="text" id="verify-code" placeholder="Código de verificación">
+            <button onclick="verifyCode()">Verificar</button>
+            <p id="verify-message" style="color:red; text-align:center;"></p>
+        </div>
+
+        <!-- App Section (Hidden by default) -->
+        <div id="app-section" style="display:none;">
+            <div class="header">
+                <span id="user-display"></span>
+                <button onclick="logout()" class="logout-btn">Salir</button>
+            </div>
+
+            <div class="card">
+                <h3 id="form-title">Nuevo Ítem</h3>
+                <div class="form-group">
+                    <input type="text" id="item-name" placeholder="Nombre (ej: Ratón)">
+                    <input type="text" id="item-category" placeholder="Categoría (ej: Electrónica)">
+                    <input type="number" id="item-price" placeholder="Precio">
+                    <button id="save-btn" onclick="handleSave()">Crear</button>
+                    <button id="cancel-btn" onclick="cancelEdit()"
+                        style="display:none; background-color: #6c757d;">Cancelar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Lista de Ítems <button onclick="loadItems()" class="refresh-btn">🔄</button></h3>
+                <ul id="item-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

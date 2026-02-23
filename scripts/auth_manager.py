@@ -4,8 +4,8 @@ import sys
 import os
 
 # Configuración 
-USER_POOL_ID = 'us-east-1_eTabwJLCh'
-CLIENT_ID = '5kh894d52i6fihdeerv82reei1'
+USER_POOL_ID = 'us-east-1_vLUxayPoB'
+CLIENT_ID = '4qa2s8qsqhqbmcu2ska4p88s4d'
 REGION = 'us-east-1'
 
 client = boto3.client('cognito-idp', region_name=REGION)
@@ -56,7 +56,7 @@ def login(email, password):
         print(f"\nID_TOKEN:\n{token}\n")
         print("="*50)
         print("\nComando para probar tu API:")
-        print(f'curl -H "Authorization: {token}" https://f1gfiasvx6.execute-api.us-east-1.amazonaws.com/items')
+        print(f'curl -H "Authorization: {token}" https://07wrw4bg9j.execute-api.us-east-1.amazonaws.com/items')
         return token
     except Exception as e:
         print(f"Error al iniciar sesión: {e}")

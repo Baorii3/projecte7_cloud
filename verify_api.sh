@@ -1,0 +1,12 @@
+#!/bin/bash
+TOKEN="eyJraWQiOiJTN3ZqdHlSYVwvQnNuUU5QVGVtRmpnNm56SUhtVGhYRUhCZWd5WTNXTkRVTT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjNGY4OTRkOC04MDUxLTcwYzEtZTFhMS00MzIyZGRkM2JkNjQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX3A3SzZmVDdyQiIsImNvZ25pdG86dXNlcm5hbWUiOiJjNGY4OTRkOC04MDUxLTcwYzEtZTFhMS00MzIyZGRkM2JkNjQiLCJvcmlnaW5fanRpIjoiNjA4NjRlZWQtM2ZlNy00YWJkLTg3ZTctYzEzMzM0YmM5MjhiIiwiYXVkIjoiNzFobGUzNzJocjlvZ3F2dG91aGc3MmdhMWgiLCJldmVudF9pZCI6ImNhYjJlYjAyLWNjOTItNGIzMi1iOWE1LTEyNzg4OWJkNzRiNCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNzcxMzQzNDcyLCJleHAiOjE3NzEzNDcwNzIsImlhdCI6MTc3MTM0MzQ3MiwianRpIjoiN2Y5NTFkMzItMTQ4Mi00ZDk0LTk3N2EtMDQ1ZTY4MDljODVkIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIn0.l8YVQkiv2w7rA3olzDrhzZkIVcr1ddDfstmteq5IcBvhHfjnrMkyRMsqatGf4A_F_DoSwJR04UZAGLlaFQevxEJr7tlFbuwIuSMFV0B-3ZGMAFwEex-26l2nL493aat0_UrZmVw45wZ6Sad_ocyet0Y6c1UUePXk59J4-vyM2mT3j-UxwozzrEkLtwqvexNCOuR7oC_MwxmjjIrPKIoJ7HJrudqAbpQr2fMaKdHjXL330juU1R_DeOdgBOQmXZf8SNSMUBNTDl2h8oIjWvUoJk941zf9V_4Vc45eA2vwZGN7p0BCtq24rMDUQFsBdpqOn1N7U8cgBTdJ7sUq-pfmpQ"
+
+echo "--- TESTING OPTIONS (CORS) ---"
+curl -v -X OPTIONS \
+  -H "Origin: http://projecte7-cloud-inventory-frontend.s3-website-us-east-1.amazonaws.com" \
+  -H "Access-Control-Request-Method: GET" \
+  https://07wrw4bg9j.execute-api.us-east-1.amazonaws.com/items 2>&1
+
+echo -e "\n\n--- TESTING GET (DATA) ---"
+curl -v -H "Authorization: $TOKEN" \
+  https://07wrw4bg9j.execute-api.us-east-1.amazonaws.com/items 2>&1
